@@ -8,14 +8,19 @@ namespace MoviesApi.Controllers;
 public class MovieController : ControllerBase
 {
     private static List<Movie> movies = new List<Movie>();
-    public void AddMovie(Movie movie)
+
+    [HttpPost("")]
+    public CreatedResult AddMovie([FromBody] Movie movie)
     {
         movies.Add(movie);
+        Console.WriteLine(movie.Title);
+        Console.WriteLine(movie.Duration);
+        return Created("~Movie", movie);
     }
 
-    [HttpGet(Name = "GetWeatherForecast")]
-    public void Get()
+    [HttpGet]
+    public List<Movie> Get()
     {
-
+        return movies;
     }
 }
