@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
+ <img width=200px height=200px src="https://github.com/ThiagoKS-7/dotnet-movies-api/assets/83460816/1e955b36-38d2-4d2a-9b44-34c7e2ff313d" alt="Project logo"></a>
 </p>
 
 <h3 align="center">Dotnet Movies REST API</h3>
