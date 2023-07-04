@@ -9,8 +9,8 @@ public class MovieController : ControllerBase
 {
     private static List<Movie> movies = new List<Movie>();
 
-    [HttpPost("")]
-    public CreatedResult AddMovie([FromBody] Movie movie)
+    [HttpPost]
+    public CreatedResult CreateMovie([FromBody] Movie movie)
     {
         movies.Add(movie);
         Console.WriteLine(movie.Title + " - " + movie.Duration + " - " + movie.Genre);
@@ -18,7 +18,7 @@ public class MovieController : ControllerBase
     }
 
     [HttpGet]
-    public List<Movie> Get()
+    public IEnumerable<Movie> ListMovies()
     {
         return movies;
     }
