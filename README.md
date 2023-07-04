@@ -16,7 +16,7 @@
 
 ---
 
-<p align="center"> Few lines describing your project.
+<p align="center"> .NET Movies API, using MySQL & MVC best pratices.
     <br> 
 </p>
 
