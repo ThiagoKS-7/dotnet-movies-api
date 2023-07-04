@@ -11,23 +11,47 @@ public class MovieController : ControllerBase
     private static int id = 0;
 
     [HttpPost]
-    public CreatedResult CreateMovie([FromBody] Movie movie)
+    public IActionResult CreateMovie([FromBody] Movie movie)
     {
-        movie.Id = id++;
-        movies.Add(movie);
-        return Created("~Movie", movie);
+        try
+        {
+            movie.Id = id++;
+            movies.Add(movie);
+            return Created("~Movie", movie);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
     }
 
     [HttpGet]
-    public IEnumerable<Movie> ListMovies([FromQuery] int skip, [FromQuery] int take)
+    public IEnumerable<Movie> ListMovies([FromQuery] int skip = 0, [FromQuery] int take = 10)
     {
-        return movies.Skip(skip).Take(take);
+        try
+        {
+
+            return movies.Skip(skip).Take(take);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
     }
 
     [HttpGet("{id}")]
-    public Movie? GetMovie(int id)
+    public IActionResult GetMovie(int id)
     {
-        System.Console.WriteLine(id);
-        return movies.FirstOrDefault(movie => movie.Id == id);
+        try
+        {
+            var foundMovie = movies.FirstOrDefault(movie => movie.Id == id);
+            if (foundMovie != null) return Ok(foundMovie);
+            return NotFound();
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+
     }
 }
