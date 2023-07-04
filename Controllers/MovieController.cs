@@ -13,8 +13,7 @@ public class MovieController : ControllerBase
     public CreatedResult AddMovie([FromBody] Movie movie)
     {
         movies.Add(movie);
-        Console.WriteLine(movie.Title);
-        Console.WriteLine(movie.Duration);
+        Console.WriteLine(movie.Title + " - " + movie.Duration + " - " + movie.Genre);
         return Created("~Movie", movie);
     }
 
