@@ -4,6 +4,8 @@ namespace MoviesApi.Models;
 
 public class Movie
 {
+    public int Id { get; set; }
+
     [Required(ErrorMessage = "O título é obrigatório")]
     public string Title { get; set; }
 
@@ -14,4 +16,13 @@ public class Movie
     [Required]
     [Range(1, 600, ErrorMessage = "Duração deve ter entre 1 e 600 minutos")]
     public int Duration { get; set; }
+
+    public DateTime CreatedAt { get; set; }
+
+    public Movie()
+    {
+        Title = "";
+        Genre = "";
+        CreatedAt = DateTime.UtcNow;
+    }
 }
