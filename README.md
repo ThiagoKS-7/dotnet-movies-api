@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
+ <img height=200px src="https://github.com/ThiagoKS-7/dotnet-movies-api/assets/83460816/1e955b36-38d2-4d2a-9b44-34c7e2ff313d" alt="Project logo"></a>
 </p>
 
 <h3 align="center">Dotnet Movies REST API</h3>
@@ -16,7 +16,7 @@
 
 ---
 
-<p align="center"> Few lines describing your project.
+<p align="center"> .NET Movies API, using MySQL & MVC best pratices.
     <br> 
 </p>
 
@@ -33,7 +33,7 @@
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
