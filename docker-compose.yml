@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - dotnet-movies-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: movies
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    networks:
+      rede:
+        ipv4_address: 10.5.0.5
+volumes:
+  dotnet-movies-data:
+networks:
+  rede:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1
