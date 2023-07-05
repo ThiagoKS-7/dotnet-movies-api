@@ -20,7 +20,14 @@ public class MovieController : ControllerBase
         _mapper = mapper;
     }
 
+    /// <summary>
+    /// Adiciona um filme ao banco de dados
+    /// </summary>
+    /// <param name="movieDto">Objeto com os campos necessários para criação de um filme</param>
+    /// <returns>IActionResult</returns>
+    /// <response code="201">Caso inserção seja feita com sucesso</response>
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
     public IActionResult CreateMovie([FromBody] CreateMoviesDto movieDto)
     {
         try
@@ -40,7 +47,15 @@ public class MovieController : ControllerBase
         }
     }
 
+    /// <summary>
+    /// Lista os filmes no banco de dados, ordenando por ID
+    /// </summary>
+    /// <param name="skip">Inteiro que corresponde a quantos filmes o sistema deve pular na consulta</param>
+    /// <param name="take">Inteiro que corresponde a quantos filmes o sistema deve trazer na consulta</param>
+    /// <returns>IActionResult</returns>
+    /// <response code="200">Caso listagem seja feita com sucesso</response>
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public IEnumerable<ReadMoviesDto> ListMovies([FromQuery] int skip = 0, [FromQuery] int take = 10)
     {
         try
@@ -54,7 +69,14 @@ public class MovieController : ControllerBase
         }
     }
 
+    /// <summary>
+    /// Lista os dados de um filme no banco de dados, a partir do ID
+    /// </summary>
+    /// <param name="id">Inteiro que corresponde ao ID de um filme</param>
+    /// <returns>IActionResult</returns>
+    /// <response code="200">Caso filme seja encontrado com sucesso</response>
     [HttpGet("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public IActionResult GetMovieById(int id)
     {
         try
@@ -71,7 +93,16 @@ public class MovieController : ControllerBase
 
     }
 
+
+    /// <summary>
+    /// Atualiza os dados de um filme no banco de dados, a partir do ID
+    /// </summary>
+    /// <param name="id">Inteiro que corresponde ao ID de um filme</param>
+    /// <param name="movieDto">Objeto com os campos necessários para criação de um filme</param>
+    /// <returns>IActionResult</returns>
+    /// <response code="204">Caso filme seja atualizado com sucesso</response>
     [HttpPut("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
     public IActionResult UpdateMovieById(int id, [FromBody] UpdateMoviesDto movieDto)
     {
         try
@@ -89,7 +120,15 @@ public class MovieController : ControllerBase
 
     }
 
+    /// <summary>
+    /// Atualiza um dado específico de um filme no banco de dados, a partir do ID
+    /// </summary>
+    /// <param name="id">Inteiro que corresponde ao ID de um filme</param>
+    /// <param name="patch">Lista de objetos com {op: operação, path: nome do campo, value: alteração}</param>
+    /// <returns>IActionResult</returns>
+    /// <response code="204">Caso filme seja atualizado com sucesso</response>
     [HttpPatch("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
     public IActionResult UpdateMovieFieldById(int id, JsonPatchDocument<UpdateMoviesDto> patch)
     {
         try
@@ -111,7 +150,15 @@ public class MovieController : ControllerBase
 
     }
 
+
+    /// <summary>
+    /// Deleta um filme específico no banco de dados, a partir do ID
+    /// </summary>
+    /// <param name="id">Inteiro que corresponde ao ID de um filme</param>
+    /// <returns>IActionResult</returns>
+    /// <response code="204">Caso filme seja removido com sucesso</response>
     [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
     public IActionResult DeleteMovie(int id)
     {
         try
