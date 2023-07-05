@@ -2,12 +2,12 @@ version: "3.7"
 
 services:
   mysql:
-    image: mysql:5.7
+    image: mysql:8.0
     volumes:
       - dotnet-movies-data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: movies
+      MYSQL_DATABASE: moviesDb
     ports:
       - 3306:3306
     expose:
