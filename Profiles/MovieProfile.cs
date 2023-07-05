@@ -11,5 +11,6 @@ public class MoviesProfile : Profile
         CreateMap<CreateMoviesDto, Movie>();
         CreateMap<UpdateMoviesDto, Movie>();
         CreateMap<Movie, UpdateMoviesDto>();
+        CreateMap<Movie, ReadMoviesDto>();
     }
 }

@@ -6,22 +6,15 @@ public class CreateMoviesDto
 {
 
     [Required(ErrorMessage = "O título é obrigatório")]
-    public string Title { get; set; }
+    public string Title { get; set; } = "";
 
     [Required(ErrorMessage = "O gênero é obrigatório")]
     [StringLength(50, ErrorMessage = "Tamanho não pode ser maior que 50 caracteres")]
-    public string Genre { get; set; }
+    public string Genre { get; set; } = "";
 
     [Required]
     [Range(1, 600, ErrorMessage = "Duração deve ter entre 1 e 600 minutos")]
     public int Duration { get; set; }
 
-    public DateTime CreatedAt { get; set; }
-
-    public CreateMoviesDto()
-    {
-        Title = "";
-        Genre = "";
-        CreatedAt = DateTime.UtcNow;
-    }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }

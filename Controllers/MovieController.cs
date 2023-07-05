@@ -41,12 +41,12 @@ public class MovieController : ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<Movie> ListMovies([FromQuery] int skip = 0, [FromQuery] int take = 10)
+    public IEnumerable<ReadMoviesDto> ListMovies([FromQuery] int skip = 0, [FromQuery] int take = 10)
     {
         try
         {
 
-            return _context.Movies.OrderBy(x => x.Id).Skip(skip).Take(take);
+            return _mapper.Map<List<ReadMoviesDto>>(_context.Movies.OrderBy(x => x.Id).Skip(skip).Take(take));
         }
         catch (Exception e)
         {
@@ -60,8 +60,9 @@ public class MovieController : ControllerBase
         try
         {
             var foundMovie = _context.Movies.FirstOrDefault(movie => movie.Id == id);
-            if (foundMovie != null) return Ok(foundMovie);
-            return NotFound();
+            if (foundMovie == null) return NotFound();
+            var movieDto = _mapper.Map<ReadMoviesDto>(foundMovie);
+            return Ok(movieDto);
         }
         catch (Exception e)
         {
