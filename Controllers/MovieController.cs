@@ -109,4 +109,22 @@ public class MovieController : ControllerBase
         }
 
     }
+
+    [HttpDelete("{id}")]
+    public IActionResult DeleteMovie(int id)
+    {
+        try
+        {
+            var foundMovie = _context.Movies.FirstOrDefault(movie => movie.Id == id);
+            if (foundMovie == null) return NotFound();
+            _context.Remove(foundMovie);
+            _context.SaveChanges();
+            return NoContent();
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+
+    }
 }
